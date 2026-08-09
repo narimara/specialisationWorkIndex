@@ -86,7 +86,7 @@ footer {
 /*longer post about how this works and the * + * selector*/
 /*https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/*/
 .prose > * + * {
-    margin-block-start: var(prose-flow, 1em);
+    margin-block-start: var(--prose-flow, 1em);
 }
 
 /* breakpoints from Material Design Spec https://m3.material.io/foundations/layout/breakpoints/overview */
