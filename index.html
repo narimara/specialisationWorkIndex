@@ -32,20 +32,335 @@
     <div class="mainNavContainer">
 
         <nav>
-            <p><a href="./assignment1.html">Assignment 1</a></p>
-            <p><a href="./assignment2.html">Assignment 2</a></p>
+            <p><a href="./assignment1.html">Assignment 1</br>
+                Scenario: Multiplayer Synthesizer</a></p>
+            <p><a href="./assignment2.html">Assignment 2</br>
+                Parallel Prototypes</a></p>
         </nav>
 
         <main>
-            <section id="scenario-section">
-                <p><h3 class="firstSectionHeading">Scenario: Multiplayer Synthesizer</h3></p>
+            <section>
+                <p><h3 class="synopsisHeading">Synopsis</h3></p>
+                Arcade Synth is a browser based synthesiser instrument designed to be played by two people sharing one computer. It aims to provide users the opportunity to spent time and bond over a creative endeavor, and is largely an explorative project that proposes music creation as a simplified, casual and cooperative experience. Two users split controls of the instrument between mouse and keyboard, with mouse handling note creation, waveform, volume, speed, and pause and play, and keyboard handling the timing and pitch of each created note.
+            </section>
+
+            <section>
+                <p><h3 class="firstSectionHeading">Design Scenario</h3></p>
+                My chosen design scenario was the multiplayer synthesiser instrument. The brief highlights that music is often played in collaboration with others but browser-based spaces for this are quite lacking. To address this, a key defining feature must be the ability for multiple people to use the instrument on one computer. To me, this sounded like the core principles should be encouraging casual collaboration, allowing people to bond with each other through a creative outlet. The purpose serves both in making music and bringing people closer together. This could be interpreted through multiple means, but the one that stuck out to me the most was essentially gamifying the process of making music, to make it more fun to do with other people.
+            </section>
+
+            <section>
+            <p><h3 class="firstSectionHeading">Response</h3></p>
+                My response was driven by this interpretation of the design scenario, and I leaned heavily into gamification. I borrowed from the structure of rhythm games and ensured the instrument relied on both users to work in collaboration rather than independently making noise. I did this through the controls between mouse and keyboard, and locking some elements of interaction that force players to build off each other and communicate.
+            </section>
+
+            <aside></aside>
+
+            <section>
+            <p><h3 class="firstSectionHeading"><a href="https://narimara.github.io/Audioinstrument/" target="_blank">
+                <figure>
+                    <img src="assets/ArcadeSynth_ss.png" alt="screenshot of Arcade Synth"/></img>
+                </figure> Arcade Synth
+            </a></h3></p>
 
             </section>
 
-            <section id="parallel-prototype-section">
-                <p><h3 class="firstSectionHeading">Parallel Prototypes</h3></p>
+            <section>
+                <p><h3 class="firstSectionHeading">Core Interactive Features</h3></p>
+                <h4>Mouse and Keyboard Split Controls</h4>
+                Splitting controls between mouse and keyboard shaped all other interactions. The user on mouse controls global parameters like waveform, playback speed, volume and note spawning while the user on keyboard uses predominantly the arrow keys to arrange the notes into music.
+                <h4>Spatial Input</h4>
+                The pitch and timing of notes is decided by a 12 x 16 grid which acts as a stave. The position of notes on this grid along the x axis determines their timing in 12 looping beats, while the y axis determines pitch on the chromatic scale.
+                <h4>Randomised Note Length</h4>
+                Notes created appear on the stave at a randomly selected length of between 1 and 4 beats as an extra challenge for creativity through a simple constant that selects a number from 1 to 4 every time the add note button is pressed.
+                <h4>Looping Playback</h4>
+                When play is enabled, a visible playhead scans from left to right over the stage, animated using javascript, and plays notes according to their stave position as it crosses them.
+            </section>
+
+            <section>
+                <p><h3 class="firstSectionHeading">Extended Technique</h3></p>
+                <h4>Spatial Input</h4>
+                As I briefly described in the previous section, the spatial input in Arcade Synth works through a grid that locks notes to increments of 12 and 16 along its axes. I call this section of the display a stave because it is intended to transform traditional music notation into a simpler and more intuitive system.
+                The grid does not operate on freeform spatial coordinates as this made it difficult to tune pitch in a way that sounded pleasant. Instead, it functions on a step integer system which locks note objects to increments of a scale of 1-16 vertically and 1-12 horizontally.
+                Audio feedback is processed through note collision detection of a vertical playhead animated to sweep through the stave area from left to right.
+            </section>
+
+            <section>
+                <p><h3 class="firstSectionHeading">Design System</h3></p>
+                I created a moodboard with a visual style inspired by retro arcade hardware. It felt fitting to my game-inspired concept to keep the visual style similarly game-like (hence the word arcade in the name of the instrument) and I liked the idea of glowing elements against a dark background.
+                I used a dark canvas with a high contrast palette of cyan and green, using the accent colours for highlighting interactive elements with borders and state changes on hover or selection. Buttons also use greyscale filtering and reduced opacity when disabled to communicate interaction locks.
+                My chosen fonts are Share Tech Mono for labels and buttons, and Space Grotesk for other visible text.
+                My spatial layout of all the elements, as well as the design of buttons, sliders, and instructions was determined through user testing. The result keeps the interface clean and easy to navigate, with only few interactive elements that can be played with and arranged in endless combinations.
+            </section>
+
+            <section>
+                <p><h4>Git Commit Logs</h4></p>
+                <details>
+                    <table>
+
+                        <thead><tr>
+
+                            <th>Author</th>
+                            <th>Date</th>
+                            <th>Subject</th>
+                            <th>Body</th>
+
+                        </tr></thead>
+
+                        <tbody>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Wed Jul 29 15:21:10 2026 +1000</td>
+                            <td>Created Audio Instrument</td>
+                            <td>made the index.html and reset and style css files. created working button that plays a note when clicked</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Wed Aug 12 14:49:08 2026 +1000</td>
+                            <td>added intro dialog</td>
+                            <td>Added a dialog element with a button which closes it</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Wed Aug 12 14:56:56 2026 +1000</td>
+                            <td>added audio init</td>
+                            <td>added an event listener on dialog close to start the audio system</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Wed Aug 12 15:55:37 2026 +1000</td>
+                            <td>added design system in css</td>
+                            <td>Set up variables for colour and border and applied a font for the page. Applied style to the dialog box</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Wed Aug 12 16:10:15 2026 +1000</td>
+                            <td>Added button style</td>
+                            <td>Made some changes to colour and added a style for buttons</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Wed Aug 19 15:47:46 2026 +1000</td>
+                            <td>Added event listeners for 2nd note</td>
+                            <td>separated the start and end of playing notes and handled mouse leave</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Wed Aug 19 15:59:18 2026 +1000</td>
+                            <td>added some visual feedback</td>
+                            <td>Made changes to how a button visually responds when clicked</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Mon Sep 21 23:11:24 2026 +1000</td>
+                            <td>Added interactions to index.html</td>
+                            <td>Created functions that spawn notes for both players. Added waveform type selector,  as well as speed and volume slider. Made minor changes to style.css as well with a new header style</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Mon Sep 21 23:36:35 2026 +1000</td>
+                            <td>added column structure</td>
+                            <td>added the 3 column vertical split structure to the page</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Mon Sep 21 23:52:04 2026 +1000</td>
+                            <td>prepared stave area</td>
+                            <td>added playhead and prepared note balls to drag and drop into the stave area when i code that</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Tue Sep 22 00:32:38 2026 +1000</td>
+                            <td>Updated javascript to allow note spawning and placement</td>
+                            <td>Added notes spawning on click and function to drag them into the stave area. Added listeners for the position of dragged notes</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Tue Sep 22 01:12:41 2026 +1000</td>
+                            <td>added playback</td>
+                            <td>Set up looping playhead animation with pause and play function. Added function for note balls to make a sound on contact with playhead</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Wed Sep 23 01:00:44 2026 +1000</td>
+                            <td>overhauled split of interactions</td>
+                            <td>merged player 1 and 2 mouse controls. Changed player 2 to keyboard controls for note positioning on the stave</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Wed Sep 23 13:37:45 2026 +1000</td>
+                            <td>Adjusted text layout</td>
+                            <td>Changed dialog message and the format of player 2 controls on the right side</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Mon Sep 28 17:58:06 2026 +1000</td>
+                            <td>edited dialog</td>
+                            <td>Added more info in the dialog window</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Mon Sep 28 21:11:56 2026 +1000</td>
+                            <td>Added grid to stave area</td>
+                            <td>Added a grid to the stave which locks note timing and pitch to the chromatic scale for a total of 16 beats</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Mon Sep 28 22:29:52 2026 +1000</td>
+                            <td>Added consistent visual style</td>
+                            <td>Added an actual colour palette,  a more suited font,  and glowing effects on some elements</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Mon Sep 28 22:34:44 2026 +1000</td>
+                            <td>typo fix</td>
+                            <td>typo fix</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Tue Sep 29 12:26:09 2026 +1000</td>
+                            <td>added random note length</td>
+                            <td>New notes now spawn at a random length between 1-4 beats. also removed preview sound when adding new note and adjusted preview sound when moving a note to only play for 1 beat regardless of note length</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Wed Oct 7 14:25:35 2026 +1100</td>
+                            <td>merged waveform and slider format from info prototype 2</td>
+                            <td></td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Wed Oct 7 18:03:25 2026 +1100</td>
+                            <td>swapping axis for pitch and timing</td>
+                            <td>Changing direction of the playhead animation and swapping values for pitch and timing in main.js</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Wed Oct 21 14:28:06 2026 +1100</td>
+                            <td>FInalised parallel prototype merges</td>
+                            <td>Rotated playhead and fixed a line that was missing from the merge which was breaking note creation</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Wed Oct 21 14:30:50 2026 +1100</td>
+                            <td>changed project title</td>
+                            <td></td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Wed Oct 21 15:12:31 2026 +1100</td>
+                            <td>changed player 1/2 to mouse/keyboard</td>
+                            <td></td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Mon Oct 26 16:42:29 2026 +1100</td>
+                            <td>New notes now spawn in the stave center</td>
+                            <td>Also made some changes to outdated // comments and cleaned up some spacing</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Mon Oct 26 17:08:23 2026 +1100</td>
+                            <td>strengthened the multiplayer concept</td>
+                            <td>The add note button becomes locked until the newest existing note is moved with the arrow keys. instructions in the left panel also change to reflect this</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>narimara</td>
+                            <td>Mon Oct 26 17:24:23 2026 +1100</td>
+                            <td>Fixed bug related to playhead reading of notes</td>
+                            <td>changed visual feedback to match the actual timing of sound</td>
+
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+                </details>
 
             </section>
+
+
+
         </main>
 
         <!-- this is an empty element which helps with spacing -->
